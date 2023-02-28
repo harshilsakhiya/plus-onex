@@ -22,6 +22,8 @@ function CheckOut() {
   const [quntityPrice, setQuntityPrice] = useAtom(CheckOutData);
   const [errors, setErrors] = useState("");
 
+  console.log("errors", errors);
+
   const amaountArry = quntityPrice.map((item) =>
     parseFloat(item.Product_Price)
   );
@@ -34,11 +36,11 @@ function CheckOut() {
   const validateForm = () => {
     let formIsValid = true;
     let errors = {};
-    if (inputValue && !inputValue.name) {
+    if (!inputValue && !inputValue?.name) {
       formIsValid = false;
       errors["name"] = "*Please enter name!";
     }
-    if (inputValue && !inputValue.Address) {
+    if (!inputValue && !inputValue?.Address) {
       formIsValid = false;
       errors["address"] = "*Please enter address !";
     }
@@ -110,7 +112,7 @@ function CheckOut() {
               onChange={(e) => handleOnChange(e)}
             />
           </div>
-          <span className="text-danger"> {errors["Address"]}</span>
+          <span className="text-danger"> {errors["address"]}</span>
         </div>
         <div className="d-flex">
           <p>Order Date :- </p>

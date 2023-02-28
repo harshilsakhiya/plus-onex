@@ -52,13 +52,20 @@ function SignIn() {
           password: inputValue.password,
         })
         .then((res) => {
-          if (res.sucess === 200) setLoading(false);
-          localStorage.setItem("token", res?.data?.data?.access_token);
-          toast.success("login sucessfully !");
-          router.push("/dashboard");
+          if (res.sucess === 200) {
+            setLoading(false);
+            localStorage.setItem("token", res?.data?.data?.access_token);
+            toast.success("login sucessfully !");
+            router.push("/dashboard");
+          } else {
+            console.log(res);
+          }
         })
         .catch((err) => {
-          toast.error(err);
+          console.log("err", err);
+          setLoading(false);
+
+          toast.error(err.message);
         });
     }
   };
