@@ -52,17 +52,12 @@ function SignIn() {
           password: inputValue.password,
         })
         .then((res) => {
-          if (res.sucess === 200) {
-            setLoading(false);
-            localStorage.setItem("token", res?.data?.data?.access_token);
-            toast.success("login sucessfully !");
-            router.push("/dashboard");
-          } else {
-            console.log(res);
-          }
+          if (res.sucess === 200) router.push("/dashboard");
+          setLoading(false);
+          localStorage.setItem("token", res?.data?.data?.access_token);
+          toast.success("login sucessfully !");
         })
         .catch((err) => {
-          console.log("err", err);
           setLoading(false);
 
           toast.error(err.message);
@@ -86,7 +81,8 @@ function SignIn() {
             router.push("/dashboard");
           })
           .catch((err) => {
-            toast.error(err);
+            setLoading(false);
+            toast.error(err.message);
           });
       }
     }
