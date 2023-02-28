@@ -75,7 +75,8 @@ function SignIn() {
             password: inputValue.password,
           })
           .then((res) => {
-            if (res.sucess === 200) setLoading(false);
+            if (res.sucess === 200) 
+            setLoading(false);
             localStorage.setItem("token", res?.data?.data?.access_token);
             toast.success("login sucessfully !");
             router.push("/dashboard");

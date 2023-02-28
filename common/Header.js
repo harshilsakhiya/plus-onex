@@ -25,7 +25,7 @@ export default function Header() {
             <div className=" m-3 ">
               <Link href="/addToCart">
               <button className="btn btn-primary p-2">
-                Add To Cart ({product?.length}){" "}
+                Add To Cart ({product?.length ?? 0}){" "}
               </button>
               </Link>
             </div>
