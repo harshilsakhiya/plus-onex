@@ -52,10 +52,11 @@ function SignIn() {
           password: inputValue.password,
         })
         .then((res) => {
-          if (res.sucess === 200) router.push("/dashboard");
-          setLoading(false);
-          localStorage.setItem("token", res?.data?.data?.access_token);
-          toast.success("login sucessfully !");
+           if (res.sucess === 200) 
+            setLoading(false);
+            localStorage.setItem("token", res?.data?.data?.access_token);
+            toast.success("login sucessfully !");
+            router.push("/dashboard");
         })
         .catch((err) => {
           setLoading(false);
